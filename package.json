@@ -1,0 +1,43 @@
+{
+  "name": "html-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "author": "shela",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "keywords": [],
+  "scripts": {
+    "clean": "rimraf public",
+    "imagemin": "imagemin src/assets/images/* -o public/images",
+    "serve": "browser-sync start --server ./public --no-notify --no-open --files \"./public/**/*\"",
+    "build:css": "postcss src/assets/css/*.pcss --config postcss.config.js --dir public/css/ --ext css",
+    "build:ejs": "ejs-cli --base-dir src/layouts \"*.ejs\" --out public/",
+    "build:images": "run-s imagemin",
+    "build": "run-s build:*",
+    "watch:css": "onchange \"src/assets/css/*.pcss\" -- run-s build:css",
+    "watch:ejs": "onchange \"src/**/*.ejs\" -- run-s build:ejs",
+    "watch": "run-p serve watch:*"
+  },
+  "dependencies": {
+    "npm": "^6.13.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "ejs-cli": "^2.1.1",
+    "imagemin-cli": "^5.1.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.1.0",
+    "postcss-cli": "^6.1.3",
+    "postcss-normalize": "^8.0.1",
+    "precss": "^4.0.0",
+    "rimraf": "^3.0.0"
+  }
+}
