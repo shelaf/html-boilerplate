@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "author": "shela",
-  "license": "Apache-2.0",
   "licenses": [
     {
       "type": "Apache-2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0"
     }
   ],
+  "engines": {
+    "node": "16.4.x"
+  },
   "keywords": [],
   "scripts": {
     "clean": "rimraf public",
@@ -22,9 +24,6 @@
     "watch:css": "onchange \"src/assets/css/*.pcss\" -- run-s build:css",
     "watch:ejs": "onchange \"src/**/*.ejs\" -- run-s build:ejs",
     "watch": "run-p serve watch:*"
-  },
-  "dependencies": {
-    "npm": "7.18.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
