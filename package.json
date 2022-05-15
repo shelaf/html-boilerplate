@@ -10,7 +10,7 @@
     }
   ],
   "engines": {
-    "node": "16.4.x"
+    "node": "18.1.x"
   },
   "keywords": [],
   "scripts": {
@@ -26,17 +26,16 @@
     "watch": "run-p serve watch:*"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
-    "browser-sync": "^2.27.4",
-    "cssnano": "^5.0.6",
-    "ejs-cli": "^2.2.1",
+    "autoprefixer": "^10.4.7",
+    "browser-sync": "^2.27.9",
+    "cssnano": "^5.1.7",
+    "ejs-cli": "^2.2.3",
     "imagemin-cli": "^7.0.0",
     "mkdirp": "^1.0.4",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "postcss-cli": "^9.0.1:jj:q!",
-    "postcss-normalize": "^10.0.0",
-    "precss": "^4.0.0",
+    "postcss-cli": "^9.1.0",
+    "postcss-normalize": "^10.0.1",
     "rimraf": "^3.0.2"
   }
 }
