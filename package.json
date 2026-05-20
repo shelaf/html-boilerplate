@@ -1,7 +1,6 @@
 {
   "name": "html-boilerplate",
   "version": "1.0.0",
-  "description": "",
   "author": "shela",
   "licenses": [
     {
@@ -10,32 +9,27 @@
     }
   ],
   "engines": {
-    "node": "18.1.x"
+    "bun": ">=1.0.0"
   },
-  "keywords": [],
   "scripts": {
-    "clean": "rimraf public",
-    "imagemin": "imagemin src/assets/images/* -o public/images",
-    "serve": "browser-sync start --server ./public --no-notify --no-open --files \"./public/**/*\"",
-    "build:css": "postcss src/assets/css/*.pcss --config postcss.config.js --dir public/css/ --ext css",
-    "build:ejs": "ejs-cli --base-dir src/layouts \"*.ejs\" --out public/",
-    "build:images": "run-s imagemin",
-    "build": "run-s build:*",
-    "watch:css": "onchange \"src/assets/css/*.pcss\" -- run-s build:css",
-    "watch:ejs": "onchange \"src/**/*.ejs\" -- run-s build:ejs",
+    "clean": "bun --eval \"fs.rmSync('public', { recursive: true, force: true })\"",
+    "imagemin": "bun scripts/imagemin.mjs",
+    "serve": "bun scripts/dev-server.mjs",
+    "build:css": "NODE_ENV=production postcss src/assets/css/*.pcss --config postcss.config.mjs --dir public/css/ --ext css",
+    "build:html": "bun scripts/build-eta.mjs",
+    "build:images": "bun run imagemin",
+    "build": "run-p build:css build:html build:images",
+    "watch:css": "NODE_ENV=development postcss src/assets/css/*.pcss --watch --config postcss.config.mjs --dir public/css/ --ext css",
+    "watch:html": "bun scripts/watch-eta.mjs",
     "watch": "run-p serve watch:*"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "browser-sync": "^2.27.9",
-    "cssnano": "^5.1.7",
-    "ejs-cli": "^2.2.3",
-    "imagemin-cli": "^7.0.0",
-    "mkdirp": "^1.0.4",
-    "npm-run-all": "^4.1.5",
-    "onchange": "^7.1.0",
-    "postcss-cli": "^9.1.0",
-    "postcss-normalize": "^10.0.1",
-    "rimraf": "^3.0.2"
+    "cssnano": "^8.0.1",
+    "eta": "^4.6.0",
+    "npm-run-all2": "^9.0.0",
+    "postcss-cli": "^11.0.1",
+    "postcss-normalize": "^13.0.1",
+    "postcss-preset-env": "^11.3.0",
+    "sharp": "^0.34.5"
   }
 }
